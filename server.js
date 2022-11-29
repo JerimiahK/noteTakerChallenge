@@ -41,10 +41,14 @@ app.post("/api/notes", (req, res) => {
     text: req.body.text,
     id: uniqid(),
   };
-  notesArr.push(newNote);
-  fs.writeFileSync("./db/db.json", JSON.stringify(notesArr));
+  // notesArr.push(newNote);
+  //new variable = [...notesArr, newNote]
+  let pushNote = [...notesArr, newNote];
+  fs.writeFileSync("./db/db.json", JSON.stringify(pushNote));
   console.log(newNote + "newNote");
 });
+
+app.delete("/api/notes", (req, res) => {});
 
 // instantiates a PORT
 app.listen(PORT, () => {
