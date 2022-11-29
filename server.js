@@ -24,11 +24,14 @@ app.get("/notes", (req, res) => {
 });
 
 // creates a GET route to read and return all saved notes from the 'db.json' file.
-app.get("/api/notes", (req, res) => {
-    res.json(noteData);
+app.get("/api/notes/", (req, res) => {
+ return res.json(noteData);
 });
 
 // creates a POST route to receive a new note to save on the request body, add it to the 'db.json' file, and then return the new note to the client. Gives each note a unique ID when its saved. (look up NPM packages to do this).
+app.post("/api/notes", (req, res) => {
+  console.log(`${req.method} request received`);
+});
 
 // instantiates a PORT
 app.listen(PORT, () => {
